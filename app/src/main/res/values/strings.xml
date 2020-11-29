@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Take Note!</string>
+    <string name="no_data">No Data</string>
+    <string name="delete_all">Delete All</string>
+    <string name="priority_low">Priority Low</string>
+    <string name="priority_high">Priority High</string>
+    <string name="search">Search</string>
+    <string name="sort_by">Sort by</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="all_notes_removed_successfully">All notes removed successfully.</string>
+    <string name="delete_everything">Delete everything?</string>
+    <string name="are_you_sure_you_want_to_remove_everything">Are you sure you want to remove everything?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="undo">Undo</string>
+    <string name="please_fill_all_required_fields">Please fill all the required fields!</string>
+    <string name="successfully_updated">Successfully updated!</string>
+    <string name="image_url">Image URL</string>
+    <string name="please_fill_all_the_required_fields">Please fill all the required fields.</string>
+    <string name="successfully_added">Successfully added!</string>
+
+    <string-array name="priorities">
+        <item>High Priority</item>
+        <item>Medium Priority</item>
+        <item>Low Priority</item>
+    </string-array>
 </resources>
