@@ -14,9 +14,13 @@
     <color name="lightGray">#E6E6E6</color>
     <color name="darkGray">#4B4B4B</color>
 
+    <color name="splashBackgroundColor">#5502C8</color>
+
     <color name="listBackground">#DABC61</color>
 
     <color name="red">#FF4646</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
+
+    <color name="delete">#E00A3E</color>
 </resources>
