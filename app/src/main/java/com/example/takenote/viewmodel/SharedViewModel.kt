@@ -1,7 +1,9 @@
 package com.example.takenote.viewmodel
 
 import android.app.Application
+import android.util.Patterns
 import android.view.View
+import android.webkit.URLUtil
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -59,6 +61,15 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     fun verifyData(title: String, description: String): Boolean {
         return !(title.isEmpty() || description.isEmpty())
+    }
+
+    fun validateImageUrl(url: String): String{
+        return if(URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches())
+            url
+        else
+            return ""
+
+
     }
 
     fun parsePriority(priority: String): NotePriority {

@@ -1,13 +1,17 @@
 package com.example.takenote.util
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.Spinner
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.takenote.R
+import com.example.takenote.TakeNoteApplication
 import com.example.takenote.data.model.Note
 import com.example.takenote.data.model.NotePriority
 import com.example.takenote.ui.NotesFragmentDirections
@@ -43,6 +47,23 @@ class BindingAdapters {
                 view.visibility = View.VISIBLE
             else
                 view.visibility = View.INVISIBLE
+        }
+
+        @BindingAdapter("android:isImageAvailable")
+        @JvmStatic
+        fun isImageAvailable(view: View, isAvailable:Boolean){
+            if (isAvailable)
+                view.visibility = View.VISIBLE
+            else
+                view.visibility = View.GONE
+        }
+
+        @BindingAdapter("android:imageResourceURL")
+        @JvmStatic
+        fun imageResourceURL(imageView: ImageView, url:String){
+            Glide.with(TakeNoteApplication.instance.applicationContext)
+                .load(url)
+                .into(imageView)
         }
 
         @BindingAdapter("android:parsePriorityToInt")

@@ -3,6 +3,7 @@ package com.example.takenote.data.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 import java.text.DateFormat
 
@@ -20,4 +21,6 @@ data class Note(
 ) : Parcelable {
     val formattedDate: String
     get() = DateFormat.getDateInstance(DateFormat.MEDIUM).format(date)
+    val isImageAvailable: Boolean
+    get() = !imageURL.isNullOrEmpty()
 }

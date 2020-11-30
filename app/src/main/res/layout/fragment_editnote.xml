@@ -39,6 +39,8 @@
             android:layout_height="60dp"
             android:background="@drawable/custom_edit_text"
             android:ems="10"
+            android:maxLines="1"
+            android:inputType="textUri"
             android:layout_marginTop="8dp"
             android:hint="@string/image_url"
             android:paddingStart="24dp"

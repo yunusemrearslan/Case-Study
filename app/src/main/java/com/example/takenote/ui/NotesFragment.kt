@@ -14,6 +14,7 @@ import com.example.takenote.R
 import com.example.takenote.adapters.NotesAdapter
 import com.example.takenote.databinding.FragmentNotesBinding
 import com.example.takenote.data.model.Note
+import com.example.takenote.util.KeyboardManager
 import com.example.takenote.util.SwipeToDelete
 import com.example.takenote.viewmodel.NotesViewModel
 import com.example.takenote.viewmodel.SharedViewModel
@@ -53,8 +54,8 @@ class NotesFragment : Fragment(), SearchView.OnQueryTextListener {
         //Set Menu
         setHasOptionsMenu(true)
 
-        requireActivity().actionBar?.title = "Take Note!"
-
+        //hide keyboard
+        KeyboardManager.hideKeyboard(requireActivity())
 
         return binding.root
 

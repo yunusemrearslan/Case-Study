@@ -18,7 +18,7 @@
     <string name="undo">Undo</string>
     <string name="please_fill_all_required_fields">Please fill all the required fields!</string>
     <string name="successfully_updated">Successfully updated!</string>
-    <string name="image_url">Image URL</string>
+    <string name="image_url">Image URL (Optional)</string>
     <string name="please_fill_all_the_required_fields">Please fill all the required fields.</string>
     <string name="successfully_added">Successfully added!</string>
 

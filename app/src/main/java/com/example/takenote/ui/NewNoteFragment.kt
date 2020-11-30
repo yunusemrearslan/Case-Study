@@ -27,6 +27,9 @@ class NewNoteFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        //set default priority to medium
+        view.priorities_spinner.setSelection(1)
+
         //Spinner Item Selected Listener
         view.priorities_spinner.onItemSelectedListener = mSharedViewModel.listener
 
@@ -57,7 +60,7 @@ class NewNoteFragment : Fragment() {
                 0,
                 title,
                 description,
-                imageURL,
+                mSharedViewModel.validateImageUrl(imageURL),
                 System.currentTimeMillis(),
                 mSharedViewModel.parsePriority(priority)
             )

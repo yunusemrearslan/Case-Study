@@ -63,7 +63,7 @@ class EditNoteFragment : Fragment() {
         val title = binding.currentTitleText.text.toString()
         val description = binding.currentDescriptionText.text.toString()
         val priority = binding.currentPrioritiesSpinner.selectedItem.toString()
-        val imageURL = binding.currentImageUrlText.toString()
+        val imageURL = binding.currentImageUrlText.text.toString()
 
         val validation = mSharedViewModel.verifyData(title, description)
         if (validation) {
@@ -72,7 +72,7 @@ class EditNoteFragment : Fragment() {
                 args.currentItem.id,
                 title,
                 description,
-                imageURL,
+                mSharedViewModel.validateImageUrl(imageURL),
                 args.currentItem.date,
                 mSharedViewModel.parsePriority(priority),
                 true
