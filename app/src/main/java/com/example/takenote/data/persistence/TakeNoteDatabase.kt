@@ -32,8 +32,7 @@ abstract class TakeNoteDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                TakeNoteDatabase::class.java,"note_database"
+                TakeNoteDatabase::class.java, "note_database"
             ).build()
     }
-
 }

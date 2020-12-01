@@ -29,14 +29,14 @@ class EditNoteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //data binding
+        // data binding
         _binding = FragmentEditnoteBinding.inflate(inflater, container, false)
         binding.args = args
 
-        //set menu
+        // set menu
         setHasOptionsMenu(true)
 
-        //Spinner Item Selected Listener
+        // Spinner Item Selected Listener
         binding.currentPrioritiesSpinner.onItemSelectedListener = mSharedViewModel.listener
 
         return binding.root
@@ -67,7 +67,7 @@ class EditNoteFragment : Fragment() {
 
         val validation = mSharedViewModel.verifyData(title, description)
         if (validation) {
-            //update current note
+            // update current note
             val updatedNote = Note(
                 args.currentItem.id,
                 title,
@@ -79,7 +79,7 @@ class EditNoteFragment : Fragment() {
             )
             mNoteViewModel.updateNote(updatedNote)
             showSnackBarMessage(getString(R.string.successfully_updated))
-            //back to list fragment
+            // back to list fragment
             findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
         } else {
             showSnackBarMessage(getString(R.string.please_fill_all_required_fields))
@@ -91,7 +91,7 @@ class EditNoteFragment : Fragment() {
         builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
             mNoteViewModel.deleteNote(args.currentItem)
             showSnackBarMessage("Successfully removed: ${args.currentItem.title}")
-            //back to list fragment
+            // back to list fragment
             findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
         }
         builder.setNegativeButton(getString(R.string.no)) { _, _ -> }

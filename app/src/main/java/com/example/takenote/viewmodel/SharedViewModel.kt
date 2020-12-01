@@ -56,20 +56,17 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 }
             }
         }
-
     }
 
     fun verifyData(title: String, description: String): Boolean {
         return !(title.isEmpty() || description.isEmpty())
     }
 
-    fun validateImageUrl(url: String): String{
-        return if(URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches())
+    fun validateImageUrl(url: String): String {
+        return if (URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches())
             url
         else
             return ""
-
-
     }
 
     fun parsePriority(priority: String): NotePriority {

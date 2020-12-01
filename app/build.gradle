@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply from: '../ktlint/ktlint.gradle'
 
 android {
     compileSdkVersion 30
@@ -102,3 +103,10 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 }
+
+task installGitHook(type: Copy) {
+    from new File(rootProject.rootDir, 'hooks/pre-commit')
+    into { new File(rootProject.rootDir, '.git/hooks') }
+    fileMode 0777
+}
+tasks.getByPath(':app:preBuild').dependsOn installGitHook

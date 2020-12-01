@@ -12,15 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.takenote.R
 import com.example.takenote.adapters.NotesAdapter
-import com.example.takenote.databinding.FragmentNotesBinding
 import com.example.takenote.data.model.Note
+import com.example.takenote.databinding.FragmentNotesBinding
 import com.example.takenote.util.KeyboardManager
 import com.example.takenote.util.SwipeToDelete
 import com.example.takenote.viewmodel.NotesViewModel
 import com.example.takenote.viewmodel.SharedViewModel
 import com.google.android.material.snackbar.Snackbar
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-
 
 class NotesFragment : Fragment(), SearchView.OnQueryTextListener {
 
@@ -37,28 +36,27 @@ class NotesFragment : Fragment(), SearchView.OnQueryTextListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //Data binding
+        // Data binding
         _binding = FragmentNotesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mSharedViewModel = mSharedViewModel
 
-        //setup recyclerview
+        // setup recyclerview
         setupRecyclerView()
 
-        //Observe LiveData
+        // Observe LiveData
         mNotesViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
         })
 
-        //Set Menu
+        // Set Menu
         setHasOptionsMenu(true)
 
-        //hide keyboard
+        // hide keyboard
         KeyboardManager.hideKeyboard(requireActivity())
 
         return binding.root
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -93,7 +91,6 @@ class NotesFragment : Fragment(), SearchView.OnQueryTextListener {
             mNotesViewModel.insertNote(deletedItem)
         }
         snackBar.show()
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -141,10 +138,10 @@ class NotesFragment : Fragment(), SearchView.OnQueryTextListener {
         val swipeToDeleteCallback = object : SwipeToDelete() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val deletedItem = adapter.noteList[viewHolder.adapterPosition]
-                //delete item
+                // delete item
                 mNotesViewModel.deleteNote(deletedItem)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
-                //Restore deleted item
+                // Restore deleted item
                 restoreDeletedData(viewHolder.itemView, deletedItem)
             }
         }

@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.takenote.data.model.Note
+import com.example.takenote.data.persistence.TakeNoteDatabase
 import com.example.takenote.data.repository.DataList
 import com.example.takenote.data.repository.NoteRepository
-import com.example.takenote.data.persistence.TakeNoteDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -26,26 +26,26 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
         sortByLowPriority = repository.sortNotesByLowPriority
     }
 
-    fun insertNote(note: Note){
-        viewModelScope.launch(Dispatchers.IO){
+    fun insertNote(note: Note) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.insertNote(note)
         }
     }
 
-    fun updateNote(note: Note){
+    fun updateNote(note: Note) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateNote(note)
         }
     }
 
-    fun deleteNote(note: Note){
-        viewModelScope.launch(Dispatchers.IO){
+    fun deleteNote(note: Note) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.deleteNote(note)
         }
     }
 
     fun deleteAll() {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAll()
         }
     }

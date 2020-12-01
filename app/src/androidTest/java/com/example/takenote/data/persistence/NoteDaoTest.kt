@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 @SmallTest
 class NoteDaoTest {
 
-    //This is used to test asynchronous tasks
+    // This is used to test asynchronous tasks
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -35,7 +35,6 @@ class NoteDaoTest {
             TakeNoteDatabase::class.java
         ).allowMainThreadQueries().build()
         dao = database.notesDao()
-
     }
 
     @Test

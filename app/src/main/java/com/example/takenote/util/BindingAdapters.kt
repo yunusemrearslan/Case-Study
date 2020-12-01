@@ -9,7 +9,6 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.takenote.R
 import com.example.takenote.TakeNoteApplication
 import com.example.takenote.data.model.Note
@@ -19,13 +18,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BindingAdapters {
 
-    companion object{
+    companion object {
 
         @BindingAdapter("android:navigateToNewNoteFragment")
         @JvmStatic
-        fun navigateToNewNoteFragment(view: FloatingActionButton, navigate:Boolean){
+        fun navigateToNewNoteFragment(view: FloatingActionButton, navigate: Boolean) {
             view.setOnClickListener {
-                if (navigate){
+                if (navigate) {
                     view.findNavController().navigate(R.id.action_notesFragment_to_newNoteFragment)
                 }
             }
@@ -33,8 +32,8 @@ class BindingAdapters {
 
         @BindingAdapter("android:emptyDatabase")
         @JvmStatic
-        fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>){
-            when(emptyDatabase.value){
+        fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>) {
+            when (emptyDatabase.value) {
                 true -> view.visibility = View.VISIBLE
                 false -> view.visibility = View.INVISIBLE
             }
@@ -42,7 +41,7 @@ class BindingAdapters {
 
         @BindingAdapter("android:isEdited")
         @JvmStatic
-        fun isEdited(view: View, isEdited: Boolean){
+        fun isEdited(view: View, isEdited: Boolean) {
             if (isEdited)
                 view.visibility = View.VISIBLE
             else
@@ -51,7 +50,7 @@ class BindingAdapters {
 
         @BindingAdapter("android:isImageAvailable")
         @JvmStatic
-        fun isImageAvailable(view: View, isAvailable:Boolean){
+        fun isImageAvailable(view: View, isAvailable: Boolean) {
             if (isAvailable)
                 view.visibility = View.VISIBLE
             else
@@ -60,7 +59,7 @@ class BindingAdapters {
 
         @BindingAdapter("android:imageResourceURL")
         @JvmStatic
-        fun imageResourceURL(imageView: ImageView, url:String){
+        fun imageResourceURL(imageView: ImageView, url: String) {
             Glide.with(TakeNoteApplication.instance.applicationContext)
                 .load(url)
                 .into(imageView)
@@ -68,8 +67,8 @@ class BindingAdapters {
 
         @BindingAdapter("android:parsePriorityToInt")
         @JvmStatic
-        fun parsePriorityToInt(view: Spinner, priority: NotePriority){
-            when(priority){
+        fun parsePriorityToInt(view: Spinner, priority: NotePriority) {
+            when (priority) {
                 NotePriority.HIGH -> { view.setSelection(0) }
                 NotePriority.MEDIUM -> { view.setSelection(1) }
                 NotePriority.LOW -> { view.setSelection(2) }
@@ -78,8 +77,8 @@ class BindingAdapters {
 
         @BindingAdapter("android:parsePriorityColor")
         @JvmStatic
-        fun parsePriorityColor(cardView: CardView, priority: NotePriority){
-            when(priority){
+        fun parsePriorityColor(cardView: CardView, priority: NotePriority) {
+            when (priority) {
                 NotePriority.HIGH -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.red)) }
                 NotePriority.MEDIUM -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.yellow)) }
                 NotePriority.LOW -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.green)) }
@@ -88,12 +87,11 @@ class BindingAdapters {
 
         @BindingAdapter("android:sendNoteToEditFragment")
         @JvmStatic
-        fun sendNoteToEditFragment(view: ConstraintLayout, currentItem: Note){
+        fun sendNoteToEditFragment(view: ConstraintLayout, currentItem: Note) {
             view.setOnClickListener {
                 val action = NotesFragmentDirections.actionNotesFragmentToEditNoteFragment(currentItem)
                 view.findNavController().navigate(action)
             }
         }
-
     }
 }

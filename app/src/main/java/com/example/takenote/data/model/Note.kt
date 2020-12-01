@@ -3,9 +3,8 @@ package com.example.takenote.data.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.IgnoredOnParcel
-import kotlinx.android.parcel.Parcelize
 import java.text.DateFormat
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "notes_table")
 @Parcelize
@@ -17,7 +16,7 @@ data class Note(
     var imageURL: String?,
     var date: Long,
     var priority: NotePriority = NotePriority.MEDIUM,
-    var isEdited:Boolean = false
+    var isEdited: Boolean = false
 ) : Parcelable {
     val formattedDate: String
     get() = DateFormat.getDateInstance(DateFormat.MEDIUM).format(date)

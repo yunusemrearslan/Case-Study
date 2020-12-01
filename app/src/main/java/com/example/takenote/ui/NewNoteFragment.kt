@@ -27,10 +27,10 @@ class NewNoteFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        //set default priority to medium
+        // set default priority to medium
         view.priorities_spinner.setSelection(1)
 
-        //Spinner Item Selected Listener
+        // Spinner Item Selected Listener
         view.priorities_spinner.onItemSelectedListener = mSharedViewModel.listener
 
         return view
@@ -55,7 +55,7 @@ class NewNoteFragment : Fragment() {
 
         val validation = mSharedViewModel.verifyData(title, description)
         if (validation) {
-            //If data is valid, insert it to db
+            // If data is valid, insert it to db
             val newNote = Note(
                 0,
                 title,
@@ -66,14 +66,14 @@ class NewNoteFragment : Fragment() {
             )
             mNoteViewModel.insertNote(newNote)
             showSnackBarMessage(getString(R.string.successfully_added))
-            //back to list fragment
+            // back to list fragment
             findNavController().navigate(R.id.action_newNoteFragment_to_notesFragment)
         } else {
             showSnackBarMessage(getString(R.string.please_fill_all_the_required_fields))
         }
     }
 
-    private fun showSnackBarMessage(message:String){
+    private fun showSnackBarMessage(message: String) {
         Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 }

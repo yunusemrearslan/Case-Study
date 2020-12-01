@@ -1,11 +1,10 @@
 package com.example.takenote.viewmodel
 
-
 import android.os.Build
-import org.junit.Test
 import androidx.test.core.app.ApplicationProvider
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -17,7 +16,7 @@ class SharedViewModelTest {
     private lateinit var sharedViewModel: SharedViewModel
 
     @Before
-    fun setup(){
+    fun setup() {
         sharedViewModel = SharedViewModel(ApplicationProvider.getApplicationContext())
     }
 
@@ -29,21 +28,21 @@ class SharedViewModelTest {
     }
 
     @Test
-    fun `empty description returns false`(){
+    fun `empty description returns false`() {
         sharedViewModel = SharedViewModel(ApplicationProvider.getApplicationContext())
         val result = sharedViewModel.verifyData(title, emptyDescription)
         assertThat(result).isFalse()
     }
 
     @Test
-    fun `empty title and description returns false`(){
+    fun `empty title and description returns false`() {
         sharedViewModel = SharedViewModel(ApplicationProvider.getApplicationContext())
         val result = sharedViewModel.verifyData(emptyTitle, emptyDescription)
         assertThat(result).isFalse()
     }
 
     @Test
-    fun `not empty title and description returns true`(){
+    fun `not empty title and description returns true`() {
         sharedViewModel = SharedViewModel(ApplicationProvider.getApplicationContext())
         val result = sharedViewModel.verifyData(title, description)
         assertThat(result).isTrue()
@@ -57,14 +56,14 @@ class SharedViewModelTest {
     }
 
     @Test
-    fun `valid url return itself`(){
+    fun `valid url return itself`() {
         sharedViewModel = SharedViewModel(ApplicationProvider.getApplicationContext())
         val result = sharedViewModel.validateImageUrl(validURL)
         assertThat(result).isEqualTo(validURL)
     }
 
     @Test
-    fun `empty url input returns empty string`(){
+    fun `empty url input returns empty string`() {
         sharedViewModel = SharedViewModel(ApplicationProvider.getApplicationContext())
         val result = sharedViewModel.validateImageUrl(emptyURL)
         assertThat(result).isEmpty()

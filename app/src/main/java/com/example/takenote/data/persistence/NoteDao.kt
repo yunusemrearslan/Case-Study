@@ -25,10 +25,11 @@ interface NoteDao {
     @Query("SELECT * FROM notes_table WHERE title LIKE:query")
     fun searchDatabase(query: String): LiveData<List<Note>>
 
-    @Query("SELECT * FROM notes_table ORDER BY CASE WHEN priority LIKE 'H%' THEN 1 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'L%' THEN 3 END")
-    fun getAllNotesSortedByHighPriority() : LiveData<List<Note>>
+    @Query("""SELECT * FROM notes_table ORDER BY CASE WHEN priority LIKE 'H%' THEN 1 
+        WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'L%' THEN 3 END""")
+    fun getAllNotesSortedByHighPriority(): LiveData<List<Note>>
 
-    @Query("SELECT * FROM notes_table ORDER BY CASE WHEN priority LIKE 'L%' THEN 1 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'H%' THEN 3 END")
-    fun getAllNotesSortedByLowPriority() : LiveData<List<Note>>
-
+    @Query("""SELECT * FROM notes_table ORDER BY CASE WHEN priority LIKE 'L%' THEN 1 
+        WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'H%' THEN 3 END""")
+    fun getAllNotesSortedByLowPriority(): LiveData<List<Note>>
 }

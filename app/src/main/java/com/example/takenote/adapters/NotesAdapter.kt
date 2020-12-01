@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.takenote.data.model.Note
 import com.example.takenote.databinding.ItemNoteBinding
 
@@ -12,9 +11,9 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
     var noteList = emptyList<Note>()
 
-    class NotesViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root){
+    class NotesViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(note: Note){
+        fun bind(note: Note) {
             binding.note = note
             binding.executePendingBindings()
         }
@@ -41,12 +40,10 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
         holder.bind(currentItem)
     }
 
-    fun setData(notes: List<Note>){
+    fun setData(notes: List<Note>) {
         val noteDiffUtil = NoteDiffUtil(noteList, notes)
         val noteDiffResult = DiffUtil.calculateDiff(noteDiffUtil)
         this.noteList = notes
         noteDiffResult.dispatchUpdatesTo(this)
     }
-
-
 }
