@@ -17,6 +17,14 @@ it uses MVVM Design Pattern to achieve more maintainable code. The main concepts
 
 * Glide
 
+## Details
+
+This project uses "ktlint" for good and lint verified syntax. It checks the syntax with pre-defined rules before every commit.
+
+For the unit tests, LiveDataUtilAndroidTest.kt file is used. The reason is that, LiveData is asynchronous by nature but for the test purposes it should behave synchronous. Thanks to this extension "getOrAwaitValue", unit tests are successfully executed.
+
+
+
 
 
 
